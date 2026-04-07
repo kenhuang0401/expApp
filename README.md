@@ -7,9 +7,8 @@
 ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 ![Material_Design](https://img.shields.io/badge/Material--Design-757575?style=for-the-badge&logo=material-design&logoColor=white)
 
-### 極簡流暢的個人記帳系統
-
-一個讓開發者與極簡主義者輕鬆記錄開支、追蹤預算、分析消費行為的開源手機應用。
+### 極簡的個人記帳應用程式
+偏向學生使用的個人記帳系統，能精確計算每週開銷及剩餘金額
 
 ---
 
