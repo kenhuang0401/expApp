@@ -19,7 +19,7 @@
 ## 🏠 核心特色
 
 * **⚡ 快速記帳**：極簡的 UI 架構，確保在快速完成一筆收支記錄。
-* **📊 週度統計**：自動匯總週一至週日的總支出，搭配預算剩餘顯示。
+* **📊 週度統計**：自動匯總週一至週日的總支出，顯示本週剩餘預算。
 * **🎨 支出色階**：針對支出數值自動調整日歷背景色（紅底深淺對應支出高低）。
 * **🔒 資料私隱**：100% 本地存儲，不上傳任何財務資料至雲端。
 
@@ -29,37 +29,37 @@
 
 ```
 lib/
-├── components/           # UI 複用組件
-│   ├── income/           # 收入相關組件
+├── components/             # UI 複用組件
+│   ├── income/             # 收入相關組件
 │   │   ├── income_page.dart
 │   │   └── my_income_list.dart
-│   ├── list/             # 列表呈現組件
+│   ├── list/               # 列表呈現組件
 │   │   ├── my_list.dart
 │   │   ├── my_list_group.dart
 │   │   └── my_week_list.dart
-│   ├── tag/              # 標籤管理組件
+│   ├── tag/                # 標籤管理組件
 │   │   ├── tag_dialog.dart
 │   │   ├── tag_list.dart
 │   │   └── tags_page.dart
-│   ├── bottom_sheet.dart # 底部彈窗邏輯
-│   └── type_page.dart    # 類別選擇頁面
-├── database/             # 資料庫持久化
-│   └── db_helper.dart    # SQLite 操作封裝
-├── models/               # 資料模型定義
-│   └── transaction.dart  # 交易記錄模型 (Item/Day)
-├── pages/                # 主要功能頁面 (Scaffold 級別)
-│   ├── calendar_page.dart# 統計日曆頁
-│   ├── home_page.dart    # 應用程式入口主頁
-│   ├── settings_page.dart# 設定頁面
-│   └── tmp.dart          # 臨時測試檔案
-├── providers/            # 狀態管理 (ChangeNotifier)
-│   ├── color.dart        # 顏色與主題管理
-│   ├── expense.dart      # 核心收支資料邏輯
-│   ├── page.dart         # 頁面索引切換管理
-│   └── settings.dart     # App 全域設定
-├── utils/                # 工具類與擴充
-│   └── extension.dart    # BuildContext 擴充 (Provider 簡化)
-└── main.dart             # 程式執行起點
+│   ├── bottom_sheet.dart   # 底部彈窗邏輯
+│   └── type_page.dart      # 預輸入設定頁面
+├── database/              
+│   └── db_helper.dart      # SQLite 操作封裝
+├── models/                 # 資料模型定義
+│   └── transaction.dart    # 交易記錄模型 (Item/Day)
+├── pages/                  # 主要功能頁面 (Scaffold 級別)
+│   ├── calendar_page.dart  # 日曆頁面
+│   ├── home_page.dart      # 應用程式主頁
+│   ├── settings_page.dart  # 設定頁面
+│   └── tmp.dart            # 臨時測試檔案
+├── providers/              # 狀態管理 (ChangeNotifier)
+│   ├── color.dart          # 顏色與主題管理
+│   ├── expense.dart        # 核心收支資料邏輯
+│   ├── page.dart           # 頁面索引切換管理
+│   └── settings.dart       # App 全域設定
+├── utils/                  # 工具類與擴充
+│   └── extension.dart      # BuildContext 擴充 (Provider 簡化)
+└── main.dart               # 程式執行起點
 ```
 
 ---
