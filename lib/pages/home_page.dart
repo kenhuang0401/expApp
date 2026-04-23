@@ -208,7 +208,9 @@ class _MyExpensePageState extends State<MyExpensePage> with TickerProviderStateM
                               curve: Curves.easeOutExpo,
                               tween: Tween<double>(
                                 begin: 0,
-                                end: context.expenseData.nowData?.totalExpense ?? 0.0,
+                                end: (!isWeekShow)
+                                    ? (context.expenseData.nowData?.totalExpense ?? 0.0)
+                                    : context.expenseData.maxWeek ?? 0.0,
                               ),
                               builder: (context, value, child) {
                                 return Text(

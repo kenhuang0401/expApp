@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:exp02/database/db_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
@@ -11,6 +13,7 @@ class ExpenseProvider with ChangeNotifier {
   Map<String, double> _weekTags = {};
   List<Day> _weekData = [];
   double _totalCost = 0.0;
+  double _maxWeek = 0.0;
   Day? _nowData;
 
   Map<DateTime, List<Day>> get monthData => _monthData;
@@ -19,6 +22,7 @@ class ExpenseProvider with ChangeNotifier {
   DateTime get firstDate => _firstDate;
   List<Day> get weekData => _weekData;
   double? get totalCost => _totalCost;
+  double? get maxWeek => _maxWeek;
   Day? get nowData => _nowData;
 
   final DatabaseHelper _helper = DatabaseHelper();
@@ -112,8 +116,12 @@ class ExpenseProvider with ChangeNotifier {
     _weekData = tempWeek;
 
     double tmp = 0.0;
+    _maxWeek = 0.0;
     for(var day in _weekData) {
-      tmp += day.items.fold(0, (prv, x) => (prv + x.amount));
+      for(var item in day.items) {
+        tmp += item.amount;
+        _maxWeek = max(_maxWeek, item.amount);
+      }
     }
     _totalCost = tmp;
 
@@ -195,5 +203,19 @@ class ExpenseProvider with ChangeNotifier {
     await _helper.delete(item);
     _incomeData.remove(item);
     notifyListeners();
+  }
+
+  Future<void> modifyIncome(TransactionItem oldItem, TransactionItem newItem) async {
+    await removeIncome(oldItem);
+    await addIncome(newItem);
+    notifyListeners();
+  }
+
+  void getMaxDataInWeek() {
+    for(var day in _weekData) {
+      for(var item in day.items) {
+        _maxWeek = max(_maxWeek, item.amount);
+      }
+    }
   }
 }

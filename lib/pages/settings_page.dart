@@ -140,7 +140,7 @@ class _MySettingPageState extends State<MySettingPage> {
               alignment: AlignmentDirectional.centerStart,
               padding: const EdgeInsets.only(left: 10),
               child: Text(
-                "看你每週想存到多少錢^^",
+                "看你每週想存到多少錢^^ (目前進度: ${(((context.appSettings.fixedIncome - (context.expenseData.totalCost ?? 0.0)) / context.appSettings.target) * 100.0).toInt()}%)",
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 12,

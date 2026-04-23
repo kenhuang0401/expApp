@@ -18,7 +18,7 @@ class DatabaseHelper {
     return _db!;
   }
 
-  /// 建立資料庫與 transactions 表（id, name, amount, type, tags, date）
+  /// 建立資料庫
   Future<Database> _initDatabase() async {
     String path = join(await getDatabasesPath(), 'expense.db');
     return await openDatabase(

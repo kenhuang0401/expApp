@@ -79,27 +79,39 @@ class _MyListItemPageState extends State<MyListItemPage> {
               title: AnimatedSwitcher(
                 duration: const Duration(milliseconds: 250),
                 transitionBuilder: (Widget child, Animation<double> animation) {
-                  return FadeTransition(opacity: animation, child: child);
+                  return FadeTransition(
+                    opacity: animation,
+                    child: child
+                  );
                 },
-                child: Row(
-                  key: ValueKey<bool>(isPressed), // 關鍵：讓切換生效
-                  children: [
-                    Text(
-                      widget.item.name,
-                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                    ),
-                    if (isPressed) ...[
-                      const SizedBox(width: 8),
-                      Text(
-                        formattedTime,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: context.myColor.hint, // 使用較淡的顏色
-                          fontWeight: FontWeight.w300,
+                child: SizedBox(
+                  key: ValueKey("$isPressed"),
+                  width: 200,
+                  height: 30,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    key: ValueKey<bool>(isPressed), // 關鍵：讓切換生效
+                    children: [
+                      if (isPressed) ...[
+                        const SizedBox(width: 8),
+                        Text(
+                          formattedTime,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: context.myColor.hint2, // 使用較淡的顏色
+                            fontWeight: FontWeight.w300,
+                          ),
+                        )
+                      ]
+                      else
+                        Text(
+                          widget.item.name,
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                         ),
-                      ),
                     ],
-                  ],
+                  ),
                 ),
               ),
               trailing: Text(

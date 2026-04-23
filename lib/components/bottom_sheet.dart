@@ -152,6 +152,7 @@ class _MyAddItemPageState extends State<MyAddItemPage> {
                     }
 
                     DateTime time = DateTime.now();
+                    print(widget.type);
                     if(widget.type == "modify") time = widget.item!.date;
                     else if(widget.add_time != null) time = DateTime(widget.add_time!.year, widget.add_time!.month, widget.add_time!.day);
 
@@ -170,7 +171,7 @@ class _MyAddItemPageState extends State<MyAddItemPage> {
                       await context.expenseDataAction.add(item);
                     }
                     else if(widget.type == "modify") {
-                      await context.expenseDataAction.modify(widget.item!, item);
+                      await context.expenseDataAction.modifyIncome(widget.item!, item);
                     }
 
                     FocusScope.of(context).unfocus();
@@ -304,7 +305,17 @@ class _MyAddItemPageState extends State<MyAddItemPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("時間", style: TextStyle(color: Colors.black87, fontSize: 16),),
-                  Text(((widget.add_time != null) ? widget.add_time : DateTime.now()).toString().substring(0,16), style: TextStyle(color: Colors.black87, fontSize: 16),),
+                  Text(
+                    ((widget.add_time != null)
+                        ? DateTime(widget.add_time!.year, widget.add_time!.month, widget.add_time!.day)
+                        : (widget.type == "modify") ? widget.item!.date : DateTime.now()
+                    ).toString().substring(0,16),
+                    style: TextStyle(color: Colors.black87, fontSize: 16),
+                  ),
+                  /*
+                  * if(widget.type == "modify") time = widget.item!.date;
+                    else if(widget.add_time != null) time = DateTime(widget.add_time!.year, widget.add_time!.month, widget.add_time!.day);
+                  * */
                 ],
               ),
             ),

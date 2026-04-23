@@ -62,8 +62,10 @@ class _MyCalendarPageState extends State<MyCalendarPage> with SingleTickerProvid
   }
 
   (Color, Color) setItemColor(type, count, myColor, bool isNow) {
-    Color back = (isNow) ? Colors.black38 : myColor.item;
-    Color number = (isNow) ? Colors.white : Colors.black87;
+    if(isNow) return (Colors.black38, Colors.white);
+
+    Color back = myColor.item;
+    Color number = Colors.black87;
     int i=0;
 
     for(var num in standard[type]) {
